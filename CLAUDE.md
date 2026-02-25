@@ -118,14 +118,23 @@ abstract = match.group(1).strip() if match else description
 
 ### STEP 3 — Fetch PubMed Articles via Valyu
 
-Write `fetch_articles.py`:
-- Loop over all 10 medical categories
-- For each category, query Valyu API for 10 PubMed articles
-- Extract and store: `pmid`, `title`, `abstract`, `category`
-- Save results to `data/articles.json`
-- Log how many articles were fetched per category
+Write `fetch_articles.py`. ✅ DONE — 100 articles saved to `data/articles.json`
 
-- **STOP** — inspect `data/articles.json`, confirm 100 articles total (10 per category) with non-empty abstracts before proceeding.
+**Key lessons learned:**
+- Valyu returns a mix of PMID URLs (`/38532020/`) and PMC full-text URLs (`/PMC12173342`)
+- **PMC articles must be excluded** — they don't have a `## Abstract` section (full-text papers)
+- Only accept URLs matching `pubmed.ncbi.nlm.nih.gov/<digits>/` (pure numeric PMID)
+- Valyu API hard limit: `max_num_results=20` (returns 403 if exceeded)
+- `search_type` must be `"all"` when using `included_sources` (not `"proprietary"`)
+- Some categories need 3–5 query variants to find 10 valid PMID articles
+- Strip `?dopt=Abstract` and other query params from URLs before pattern matching
+- Abstract is parsed from content between `## Abstract\n\n` and the next `## ` heading
+- Fallback: use `description` field if abstract section not found and description > 80 chars
+- Open `data/articles.json` with `encoding='utf-8'` on Windows (cp1252 default breaks)
+
+**Stored fields per article:** `pmid`, `title`, `abstract`, `category`, `url`, `relevance_score`
+
+- **STOP** — 100 articles confirmed, 0 empty abstracts. ✅ DONE
 
 ---
 
