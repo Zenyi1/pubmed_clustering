@@ -151,7 +151,7 @@ Write `setup_pinecone.py`:
 
 No local model download needed — Pinecone embeds text server-side via `pinecone.inference.embed()` or directly via upsert with the inference-enabled index.
 
-- **STOP** — confirm index exists and is ready before proceeding.
+- **STOP** — confirm index exists and is ready before proceeding. ✅ DONE — index live, 0 vectors, ready for upsert.
 
 ---
 
@@ -165,7 +165,7 @@ Write `embed_abstracts.py`:
   - metadata: `pmid`, `title`, `category`, `abstract` (truncated to 500 chars for Pinecone metadata limit)
 - Embed in batches of 10 to stay within API rate limits
 
-- **STOP** — confirm embeddings file created, spot-check one vector length (should be 1024) before proceeding.
+- **STOP** — confirm embeddings file created, spot-check one vector length (should be 1024) before proceeding. ✅ DONE — 100 vectors, 1024-dim each, saved to data/embeddings.json.
 
 ---
 
@@ -178,7 +178,7 @@ Write `upsert_to_pinecone.py`:
 - Each vector: `{id: pmid, values: embedding, metadata: {...}}`
 - Print final index stats (total vector count should be 100)
 
-- **STOP** — confirm 100 vectors in index, show index stats before declaring done.
+- **STOP** — confirm 100 vectors in index, show index stats before declaring done. ✅ DONE — 100 vectors confirmed in Pinecone, 10 per category.
 
 ---
 
