@@ -66,12 +66,53 @@ No `sentence-transformers` needed — embeddings handled by Pinecone's inference
 
 ### STEP 2 — Explore Valyu API
 
-Write a small test script (`test_valyu.py`) to:
-- Load `VALYU_API_KEY` from `.env`
-- Make a single test query to the Valyu API for one medical category (e.g. "cardiology")
-- Print the raw response to understand the schema (fields available: title, abstract, PMID, etc.)
+Write a small test script (`test_valyu.py`) to explore the API schema. ✅ DONE
 
-- **STOP** — show sample response, confirm `abstract` field is present and usable before proceeding.
+**How Valyu is used in this project:**
+```python
+from valyu import Valyu
+client = Valyu(api_key=os.getenv("VALYU_API_KEY"))
+response = client.search(
+    query="<category> <topic>",
+    search_type="all",                              # must be "all" when using included_sources
+    max_num_results=10,
+    included_sources=["pubmed.ncbi.nlm.nih.gov"],  # restrict to PubMed only
+    response_length="medium",
+)
+```
+
+**SearchResult fields returned per article:**
+| Field | Description |
+|---|---|
+| `url` | PubMed URL — PMID is the last path segment, e.g. `.../38532020/` |
+| `title` | Article title with ` - PubMed` suffix (strip it) |
+| `content` | Full page text including abstract, references, MeSH terms |
+| `description` | Truncated abstract snippet |
+| `relevance_score` | Float 0–1 from Valyu |
+| `publication_date` | Often empty for PubMed results |
+| `data_type` | `"unstructured"` |
+| `source_type` | `"website"` |
+| `price` | Cost per result in dollars |
+
+**Extracting the abstract from `content`:**
+The abstract lives between `## Abstract\n\n` and the next `##` section heading. Parse it with:
+```python
+import re
+match = re.search(r'## Abstract\n\n(.*?)(?=\n## |\Z)', content, re.DOTALL)
+abstract = match.group(1).strip() if match else description
+```
+
+**What we store per article:**
+- `pmid` — extracted from URL (used as Pinecone vector ID)
+- `title` — cleaned (strip ` - PubMed`)
+- `abstract` — parsed from content (used as embedding input text)
+- `category` — which of the 10 medical categories it came from
+- `url` — original PubMed URL
+- `relevance_score` — from Valyu
+
+**Important:** `search_type` must be `"all"` (not `"proprietary"`) when `included_sources` is set.
+
+- **STOP** — confirmed `abstract` field is present and extractable. ✅ DONE
 
 ---
 
