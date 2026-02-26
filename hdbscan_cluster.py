@@ -1,5 +1,6 @@
 import json
 import os
+import pickle
 import numpy as np
 from sklearn.metrics import silhouette_score, davies_bouldin_score, adjusted_rand_score
 from sklearn.preprocessing import LabelEncoder
@@ -126,3 +127,13 @@ output = {
 os.makedirs("data", exist_ok=True)
 with open("data/hdbscan_results.json", "w", encoding="utf-8") as f:
     json.dump(output, f, indent=2, ensure_ascii=False)
+
+#save fitted models so predict_cluster.py can use approximate_predict on new papers
+if USE_UMAP:
+    with open("data/umap_reducer.pkl", "wb") as f:
+        pickle.dump(reducer, f)
+    print("\nSaved UMAP reducer to data/umap_reducer.pkl")
+
+with open("data/hdbscan_clusterer.pkl", "wb") as f:
+    pickle.dump(clusterer, f)
+print("Saved HDBSCAN clusterer to data/hdbscan_clusterer.pkl")

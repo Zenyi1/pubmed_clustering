@@ -3,7 +3,7 @@
 ## Project State
 
 Phase 1 complete — 100 PubMed abstracts fetched, embedded, and stored in Pinecone.
-Phase 2 in progress — Step 9 (sparse clustering) done. Steps 10-12 (related work lookup, hybrid index) are next.
+Phase 2 complete — sparse clustering, hybrid index, related work lookup, and cluster prediction all done.
 
 ---
 
@@ -48,7 +48,9 @@ Visualization: `visualize_clusters.py` generates `data/cluster_comparison.png` �
 
 ---
 
-## Pinecone Index
+## Pinecone Indexes
+
+### Dense-only: `pubmed-abstracts`
 
 | Property | Value |
 |---|---|
@@ -59,18 +61,41 @@ Visualization: `visualize_clusters.py` generates `data/cluster_comparison.png` �
 | Spec | serverless, AWS us-east-1 |
 | Vectors | 100 (10 per medical category) |
 
+### Hybrid: `pubmed-hybrid`
+
+| Property | Value |
+|---|---|
+| Index name | `pubmed-hybrid` |
+| Dense model | `multilingual-e5-large` (1024d) |
+| Sparse model | `pinecone-sparse-english-v0` (SPLADE) |
+| Metric | dotproduct (required for hybrid) |
+| Spec | serverless, AWS us-east-1 |
+| Vectors | 100 (dense + sparse per vector) |
+
 **Categories:** cardiology, oncology, neurology, infectious disease, endocrinology, gastroenterology, pulmonology, rheumatology, nephrology, psychiatry
 
-Querying the index:
+Querying dense-only:
 ```python
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 index = pc.Index("pubmed-abstracts")
 embedding = pc.inference.embed(
     model="multilingual-e5-large",
     inputs=["query text"],
-    parameters={"input_type": "query"},  # "query" for search, "passage" for indexing
+    parameters={"input_type": "query"},
 )
 results = index.query(vector=embedding[0].values, top_k=5, include_metadata=True)
+```
+
+Querying hybrid:
+```python
+index = pc.Index("pubmed-hybrid")
+dense = pc.inference.embed(model="multilingual-e5-large", inputs=["query"], parameters={"input_type": "query"})
+sparse = pc.inference.embed(model="pinecone-sparse-english-v0", inputs=["query"], parameters={"input_type": "query"})
+results = index.query(
+    vector=dense[0].values,
+    sparse_vector={"indices": list(sparse[0].sparse_indices), "values": list(sparse[0].sparse_values)},
+    top_k=5, include_metadata=True,
+)
 ```
 
 Metadata per vector: `pmid`, `title`, `abstract` (500 chars), `category`, `url`, `relevance_score`
@@ -128,27 +153,24 @@ VALYU_API_KEY=...
 
 ---
 
-## Phase 2 — Remaining Steps
+## Phase 2 — Completed Steps
 
 ### STEP 9 — Sparse Clustering (`cluster_sparse.py`) — DONE
 - Used pinecone-sparse-english-v0 (SPLADE) instead of TF-IDF — same HDBSCAN+UMAP pipeline
 - Dense wins: ARI 0.63 vs 0.46, Silhouette 0.83 vs 0.75
 - Visualization: `visualize_clusters.py` -> `data/cluster_comparison.png`
 
-### STEP 10 — Find Related Work: Dense (`find_related.py`)
-- Input: PMID
-- Fetch stored vector from Pinecone (`index.fetch([pmid])`)
-- Query top-k nearest neighbours, exclude self
-- Output: ranked list with score, title, category
+### STEPS 10-11 — Hybrid Index + Related Work Lookup — DONE
+- Step 10 (dense-only KNN) removed — redundant since clusters already group related papers
+- `setup_hybrid_index.py`: creates `pubmed-hybrid` index (dotproduct), upserts 100 vectors with dense+sparse embeddings
+- `find_related_hybrid.py`: queries hybrid index by PMID or free text, predicts cluster via majority vote from top-5 neighbors
+- `cluster_lookup.py`: pure local JSON lookup — shows cluster membership and co-clustered papers, no API calls
 
-### STEP 11 — Hybrid Pinecone Index
-- New index `pubmed-hybrid`, metric=`dotproduct` (required for sparse+dense)
-- Dense: multilingual-e5-large, Sparse: pinecone-sparse-english-v0
-- Scripts: `setup_hybrid_index.py`, `upsert_hybrid.py`
-
-### STEP 12 — Find Related Work: Hybrid (`find_related_hybrid.py`)
-- Dense + sparse query against `pubmed-hybrid`
-- Compare results vs dense-only — sparse helps with exact terminology, dense handles semantics
+### Cluster Prediction (`predict_cluster.py`) — DONE
+- Uses saved UMAP reducer + HDBSCAN clusterer (pickle files from `hdbscan_cluster.py`)
+- Embeds new text via Pinecone dense model, transforms through fitted UMAP, runs `hdbscan.approximate_predict`
+- Returns predicted cluster + confidence score directly from the density landscape (no neighbor vote)
+- Must re-run `hdbscan_cluster.py` after retuning params to regenerate the .pkl files
 
 ---
 
@@ -158,7 +180,7 @@ VALYU_API_KEY=...
 |---|---|
 | `README.md` | Setup and usage guide |
 | `requirements.txt` | Direct dependencies |
-| `hdbscan_cluster.py` | Main clustering script — edit params at top to tune |
+| `hdbscan_cluster.py` | Main clustering script — edit params at top to tune, saves .pkl models |
 | `data/articles.json` | 100 raw articles: pmid, title, abstract, category, url |
 | `data/embeddings.json` | 100 dense vectors + metadata |
 | `data/hdbscan_results.json` | Latest cluster assignments and metrics |
@@ -168,4 +190,10 @@ VALYU_API_KEY=...
 | `data/cluster_comparison.png` | 2x2 dense vs sparse visualization |
 | `cluster_sparse.py` | Sparse clustering script (mirrors hdbscan_cluster.py) |
 | `visualize_clusters.py` | 2x2 UMAP plot — dense vs sparse, clusters vs categories |
+| `setup_hybrid_index.py` | Creates `pubmed-hybrid` index and upserts dense+sparse vectors |
+| `find_related_hybrid.py` | Hybrid search by PMID or text, predicts cluster via neighbor vote |
+| `cluster_lookup.py` | Local cluster lookup — shows cluster members for a PMID |
+| `predict_cluster.py` | Predict cluster for new text via HDBSCAN approximate_predict |
+| `data/umap_reducer.pkl` | Fitted UMAP model (regenerated by hdbscan_cluster.py) |
+| `data/hdbscan_clusterer.pkl` | Fitted HDBSCAN model (regenerated by hdbscan_cluster.py) |
 | `prev_steps/` | Phase 1 scripts: fetch, embed, index setup, upsert, query |
