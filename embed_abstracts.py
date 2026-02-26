@@ -50,12 +50,3 @@ os.makedirs("data", exist_ok=True)
 with open("data/embeddings.json", "w", encoding="utf-8") as f:
     json.dump(embeddings, f, ensure_ascii=False)
 
-# Spot-check
-sample = embeddings[0]
-print(f"\nSpot-check on first vector:")
-print(f"  id:              {sample['id']}")
-print(f"  vector length:   {len(sample['values'])}")
-print(f"  category:        {sample['metadata']['category']}")
-print(f"  abstract[:80]:   {sample['metadata']['abstract'][:80]}...")
-print(f"\nTotal embeddings saved: {len(embeddings)}")
-print("Saved to data/embeddings.json")
