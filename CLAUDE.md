@@ -1,209 +1,98 @@
-# PubMed Clustering — Project Guide
+# PubMed Clustering — CLAUDE.md
 
-## Goal
+## Project State
 
-Use the **Valyu API** to fetch 10 PubMed articles for each of **10 medical categories** (100 articles total), extract only their **abstracts**, generate **embeddings** from those abstracts, and upsert them into a **Pinecone vector database** for downstream clustering and similarity search.
+Phase 1 (data pipeline) is complete. 100 PubMed abstracts are embedded and live in Pinecone.
+Phase 2 begins here — clustering, analysis, and search on top of that database.
 
 ---
 
-## Tech Stack
+## Pinecone Index
 
-- **Valyu API** — search and retrieve PubMed articles
-- **Pinecone** — vector database + built-in inference API for embeddings (server-side, no local model)
-- **Python + python-dotenv** — scripting and env management
-- **venv** — already set up
+| Property | Value |
+|---|---|
+| Index name | `pubmed-abstracts` |
+| Embedding model | `multilingual-e5-large` (Pinecone inference API) |
+| Dimensions | 1024 |
+| Metric | cosine |
+| Spec | serverless, AWS us-east-1 |
+| Vectors | 100 (10 per medical category) |
 
-## Environment Variables (`.env`)
+**Categories:** cardiology, oncology, neurology, infectious disease, endocrinology, gastroenterology, pulmonology, rheumatology, nephrology, psychiatry
+
+---
+
+## Querying the Index
+
+```python
+from pinecone import Pinecone
+pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+index = pc.Index("pubmed-abstracts")
+
+# Embed query text — always use input_type="query" for search
+embedding = pc.inference.embed(
+    model="multilingual-e5-large",
+    inputs=["your query here"],
+    parameters={"input_type": "query"},
+)
+
+# Search — filter by category is optional
+results = index.query(
+    vector=embedding[0].values,
+    top_k=5,
+    include_metadata=True,
+    filter={"category": {"$eq": "oncology"}},  # optional
+)
+```
+
+**Metadata fields on every vector:**
+`pmid`, `title`, `abstract` (first 500 chars), `category`, `url`, `relevance_score`
+
+---
+
+## Valyu API (if re-fetching data)
+
+```python
+from valyu import Valyu
+client = Valyu(api_key=os.getenv("VALYU_API_KEY"))
+response = client.search(
+    query="...",
+    search_type="all",                            # must be "all" with included_sources
+    max_num_results=20,                           # hard API limit — 403 if exceeded
+    included_sources=["pubmed.ncbi.nlm.nih.gov"],
+    response_length="medium",
+)
+```
+
+**Gotchas:**
+- Only accept PMID URLs (`/\d+/`) — PMC URLs (`/PMC\d+`) have no abstract section
+- Strip `?dopt=Abstract` query params before URL matching
+- Abstract lives between `## Abstract\n\n` and the next `##` heading in `content`
+- Some categories need multiple query variants to yield 10 valid PMID articles
+
+---
+
+## Environment
 
 ```
 PINECONE_API_KEY=...
 VALYU_API_KEY=...
 ```
 
-## Medical Categories (10)
-
-1. Cardiology
-2. Oncology
-3. Neurology
-4. Infectious Disease
-5. Endocrinology
-6. Gastroenterology
-7. Pulmonology
-8. Rheumatology
-9. Nephrology
-10. Psychiatry
+Run scripts with: `venv/Scripts/python.exe <script>.py` (Windows — do not use bare `pip` or `python`)
+Always open JSON files with `encoding='utf-8'` (Windows default cp1252 breaks on medical text)
 
 ---
 
-## Step-by-Step Plan
+## File Reference
 
-> **Convention:** Complete each step fully, verify output, then STOP and report before moving to the next step.
-
----
-
-### STEP 1 — Install Dependencies
-
-Install required packages into the existing venv:
-
-```
-venv/Scripts/python.exe -m pip install requests python-dotenv valyu pinecone
-```
-
-**How to install into this venv on Windows (Git Bash):**
-Use `venv/Scripts/python.exe -m pip install <package>` — do NOT use `pip` directly as it may target the wrong Python.
-
-Installed and verified:
-- `requests` 2.32.5 ✅
-- `python-dotenv` 1.2.1 ✅
-- `valyu` 2.6.0 ✅
-- `pinecone` 8.1.0 ✅
-
-No `sentence-transformers` needed — embeddings handled by Pinecone's inference API server-side.
-
-- **STOP** — confirm install succeeded before proceeding. ✅ DONE
-
----
-
-### STEP 2 — Explore Valyu API
-
-Write a small test script (`test_valyu.py`) to explore the API schema. ✅ DONE
-
-**How Valyu is used in this project:**
-```python
-from valyu import Valyu
-client = Valyu(api_key=os.getenv("VALYU_API_KEY"))
-response = client.search(
-    query="<category> <topic>",
-    search_type="all",                              # must be "all" when using included_sources
-    max_num_results=10,
-    included_sources=["pubmed.ncbi.nlm.nih.gov"],  # restrict to PubMed only
-    response_length="medium",
-)
-```
-
-**SearchResult fields returned per article:**
-| Field | Description |
+| File | Purpose |
 |---|---|
-| `url` | PubMed URL — PMID is the last path segment, e.g. `.../38532020/` |
-| `title` | Article title with ` - PubMed` suffix (strip it) |
-| `content` | Full page text including abstract, references, MeSH terms |
-| `description` | Truncated abstract snippet |
-| `relevance_score` | Float 0–1 from Valyu |
-| `publication_date` | Often empty for PubMed results |
-| `data_type` | `"unstructured"` |
-| `source_type` | `"website"` |
-| `price` | Cost per result in dollars |
-
-**Extracting the abstract from `content`:**
-The abstract lives between `## Abstract\n\n` and the next `##` section heading. Parse it with:
-```python
-import re
-match = re.search(r'## Abstract\n\n(.*?)(?=\n## |\Z)', content, re.DOTALL)
-abstract = match.group(1).strip() if match else description
-```
-
-**What we store per article:**
-- `pmid` — extracted from URL (used as Pinecone vector ID)
-- `title` — cleaned (strip ` - PubMed`)
-- `abstract` — parsed from content (used as embedding input text)
-- `category` — which of the 10 medical categories it came from
-- `url` — original PubMed URL
-- `relevance_score` — from Valyu
-
-**Important:** `search_type` must be `"all"` (not `"proprietary"`) when `included_sources` is set.
-
-- **STOP** — confirmed `abstract` field is present and extractable. ✅ DONE
-
----
-
-### STEP 3 — Fetch PubMed Articles via Valyu
-
-Write `fetch_articles.py`. ✅ DONE — 100 articles saved to `data/articles.json`
-
-**Key lessons learned:**
-- Valyu returns a mix of PMID URLs (`/38532020/`) and PMC full-text URLs (`/PMC12173342`)
-- **PMC articles must be excluded** — they don't have a `## Abstract` section (full-text papers)
-- Only accept URLs matching `pubmed.ncbi.nlm.nih.gov/<digits>/` (pure numeric PMID)
-- Valyu API hard limit: `max_num_results=20` (returns 403 if exceeded)
-- `search_type` must be `"all"` when using `included_sources` (not `"proprietary"`)
-- Some categories need 3–5 query variants to find 10 valid PMID articles
-- Strip `?dopt=Abstract` and other query params from URLs before pattern matching
-- Abstract is parsed from content between `## Abstract\n\n` and the next `## ` heading
-- Fallback: use `description` field if abstract section not found and description > 80 chars
-- Open `data/articles.json` with `encoding='utf-8'` on Windows (cp1252 default breaks)
-
-**Stored fields per article:** `pmid`, `title`, `abstract`, `category`, `url`, `relevance_score`
-
-- **STOP** — 100 articles confirmed, 0 empty abstracts. ✅ DONE
-
----
-
-### STEP 4 — Set Up Pinecone Index with Integrated Embedding
-
-Write `setup_pinecone.py`:
-- Load `PINECONE_API_KEY` from `.env`
-- Create a Pinecone index named `pubmed-abstracts` if it does not already exist
-  - Use Pinecone's integrated inference model: `multilingual-e5-large`
-  - dimension: `1024` (matches `multilingual-e5-large`)
-  - metric: `cosine`
-  - spec: serverless (cloud: `aws`, region: `us-east-1`)
-- Print index stats to confirm it is ready
-
-No local model download needed — Pinecone embeds text server-side via `pinecone.inference.embed()` or directly via upsert with the inference-enabled index.
-
-- **STOP** — confirm index exists and is ready before proceeding. ✅ DONE — index live, 0 vectors, ready for upsert.
-
----
-
-### STEP 5 — Embed Abstracts via Pinecone Inference API
-
-Write `embed_abstracts.py`:
-- Load `PINECONE_API_KEY` and `data/articles.json`
-- Use `pc.inference.embed(model="multilingual-e5-large", inputs=[abstract_text], parameters={"input_type": "passage"})` for each abstract
-- Each embedding is a 1024-dimensional float vector
-- Save embeddings + metadata to `data/embeddings.json` (list of `{id, embedding, metadata}`)
-  - metadata: `pmid`, `title`, `category`, `abstract` (truncated to 500 chars for Pinecone metadata limit)
-- Embed in batches of 10 to stay within API rate limits
-
-- **STOP** — confirm embeddings file created, spot-check one vector length (should be 1024) before proceeding. ✅ DONE — 100 vectors, 1024-dim each, saved to data/embeddings.json.
-
----
-
-### STEP 6 — Upsert Embeddings into Pinecone
-
-Write `upsert_to_pinecone.py`:
-- Load `PINECONE_API_KEY` and `data/embeddings.json`
-- Connect to `pubmed-abstracts` index
-- Upsert all 100 vectors in batches of 50
-- Each vector: `{id: pmid, values: embedding, metadata: {...}}`
-- Print final index stats (total vector count should be 100)
-
-- **STOP** — confirm 100 vectors in index, show index stats before declaring done. ✅ DONE — 100 vectors confirmed in Pinecone, 10 per category.
-
----
-
-## File Layout (after all steps complete)
-
-```
-pubmed_clustering/
-├── .env                    # API keys (gitignored)
-├── CLAUDE.md               # This file
-├── data/
-│   ├── articles.json       # Raw fetched articles
-│   └── embeddings.json     # Embedded abstracts + metadata
-├── test_valyu.py           # Step 2: API exploration
-├── fetch_articles.py       # Step 3: Fetch articles
-├── embed_abstracts.py      # Step 4: Generate embeddings
-├── setup_pinecone.py       # Step 5: Create Pinecone index
-├── upsert_to_pinecone.py   # Step 6: Upsert to Pinecone
-└── venv/
-```
-
----
-
-## Notes
-
-- All API keys come from `.env` — never hardcode them.
-- If Valyu returns fewer than 10 results for a category, log a warning and continue.
-- Pinecone free tier supports 1 serverless index — reuse if it already exists.
-- Do not skip steps or combine them — each has a verification checkpoint.
+| `data/articles.json` | 100 raw articles: pmid, title, abstract, category, url |
+| `data/embeddings.json` | 100 vectors + metadata, ready to re-upsert if needed |
+| `fetch_articles.py` | Re-fetch articles from Valyu (runs full pipeline) |
+| `embed_abstracts.py` | Re-embed abstracts via Pinecone inference |
+| `setup_pinecone.py` | Create index (idempotent — skips if exists) |
+| `upsert_to_pinecone.py` | Upsert embeddings.json into Pinecone |
+| `query_index.py` | Search the index by text query |
+| `test_valyu.py` | Explore raw Valyu API response schema |
