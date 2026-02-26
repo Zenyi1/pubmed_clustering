@@ -1,0 +1,728 @@
+{
+  "embedding_type": "sparse",
+  "model": "pinecone-sparse-english-v0",
+  "umap_params": {
+    "n_components": 40,
+    "n_neighbors": 5,
+    "min_dist": 0.0,
+    "metric": "cosine",
+    "random_state": 42
+  },
+  "hdbscan_params": {
+    "min_cluster_size": 3,
+    "min_samples": null,
+    "cluster_selection_epsilon": 0.0,
+    "cluster_selection_method": "eom",
+    "metric": "euclidean"
+  },
+  "metrics": {
+    "n_clusters": 11,
+    "noise_pct": 4.0,
+    "silhouette": 0.7475,
+    "davies_bouldin": 0.2953,
+    "ari_vs_categories": 0.4583,
+    "avg_membership_confidence": 0.8884
+  },
+  "assignments": [
+    {
+      "pmid": "38844093",
+      "cluster": 5,
+      "confidence": 0.8768,
+      "category": "cardiology",
+      "title": "Reassessing heart failure therapy in Thailand: Patient insights and treatment outcomes from the Thai heart failure registry"
+    },
+    {
+      "pmid": "10453861",
+      "cluster": 7,
+      "confidence": 0.2761,
+      "category": "cardiology",
+      "title": "Cardiology or primary care for heart failure in the community setting: process of care and clinical outcomes"
+    },
+    {
+      "pmid": "38532020",
+      "cluster": 5,
+      "confidence": 0.9264,
+      "category": "cardiology",
+      "title": "Contemporary pharmacological treatment and management of heart failure"
+    },
+    {
+      "pmid": "28613623",
+      "cluster": 5,
+      "confidence": 1.0,
+      "category": "cardiology",
+      "title": "Heart Failure (Congestive Heart Failure)"
+    },
+    {
+      "pmid": "35363499",
+      "cluster": 5,
+      "confidence": 0.9264,
+      "category": "cardiology",
+      "title": "2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure: A Report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines"
+    },
+    {
+      "pmid": "6624651",
+      "cluster": 7,
+      "confidence": 1.0,
+      "category": "cardiology",
+      "title": "Treatment and prophylaxis of ventricular arrhythmias in acute myocardial infarction"
+    },
+    {
+      "pmid": "2473403",
+      "cluster": 7,
+      "confidence": 0.7102,
+      "category": "cardiology",
+      "title": "Preliminary report: effect of encainide and flecainide on mortality in a randomized trial of arrhythmia suppression after myocardial infarction"
+    },
+    {
+      "pmid": "1946114",
+      "cluster": 7,
+      "confidence": 1.0,
+      "category": "cardiology",
+      "title": "Arrhythmias and acute myocardial infarction"
+    },
+    {
+      "pmid": "37009192",
+      "cluster": 7,
+      "confidence": 1.0,
+      "category": "cardiology",
+      "title": "Arrhythmias After Acute Myocardial Infarction"
+    },
+    {
+      "pmid": "2464919",
+      "cluster": 7,
+      "confidence": 1.0,
+      "category": "cardiology",
+      "title": "Congestive heart failure after acute myocardial infarction in patients receiving antiarrhythmic agents for ventricular premature complexes (Cardiac Arrhythmia Pilot Study)"
+    },
+    {
+      "pmid": "328137",
+      "cluster": 9,
+      "confidence": 1.0,
+      "category": "oncology",
+      "title": "Clinical trials in cancer chemotherapy"
+    },
+    {
+      "pmid": "3082506",
+      "cluster": 8,
+      "confidence": 1.0,
+      "category": "oncology",
+      "title": "Clinical trials on adjuvant chemotherapy for breast cancer"
+    },
+    {
+      "pmid": "39541202",
+      "cluster": 10,
+      "confidence": 1.0,
+      "category": "oncology",
+      "title": "Toripalimab Plus Chemotherapy as a First-Line Therapy for Extensive-Stage Small Cell Lung Cancer: The Phase 3 EXTENTORCH Randomized Clinical Trial"
+    },
+    {
+      "pmid": "32880601",
+      "cluster": 10,
+      "confidence": 0.8118,
+      "category": "oncology",
+      "title": "Efficacy and Safety of Pembrolizumab or Pembrolizumab Plus Chemotherapy vs Chemotherapy Alone for Patients With First-line, Advanced Gastric Cancer: The KEYNOTE-062 Phase 3 Randomized Clinical Trial"
+    },
+    {
+      "pmid": "18628452",
+      "cluster": 1,
+      "confidence": 1.0,
+      "category": "oncology",
+      "title": "Targeted therapies to improve tumor immunotherapy"
+    },
+    {
+      "pmid": "40380196",
+      "cluster": 1,
+      "confidence": 0.5953,
+      "category": "oncology",
+      "title": "Tumor-associated macrophages remodel the suppressive tumor immune microenvironment and targeted therapy for immunotherapy"
+    },
+    {
+      "pmid": "25941618",
+      "cluster": 1,
+      "confidence": 1.0,
+      "category": "oncology",
+      "title": "Tumor antigen-targeting monoclonal antibody-based immunotherapy: Orchestrating combined strategies for the development of long-term antitumor immunity"
+    },
+    {
+      "pmid": "38298714",
+      "cluster": 1,
+      "confidence": 0.7468,
+      "category": "oncology",
+      "title": "Potential role of immunotherapy and targeted therapy in the treatment of cancer: A contemporary nursing practice"
+    },
+    {
+      "pmid": "31705737",
+      "cluster": 1,
+      "confidence": 0.8127,
+      "category": "oncology",
+      "title": "Targeted therapy and immunotherapy: Emerging biomarkers in metastatic melanoma"
+    },
+    {
+      "pmid": "28690075",
+      "cluster": 1,
+      "confidence": 1.0,
+      "category": "oncology",
+      "title": "Tumor microenvironment changes leading to resistance of immune checkpoint inhibitors in metastatic melanoma and strategies to overcome resistance"
+    },
+    {
+      "pmid": "40294371",
+      "cluster": 10,
+      "confidence": 0.8193,
+      "category": "neurology",
+      "title": "Impact of Brain Frailty on Clinical Presentation and Neurologic Recovery in Acute Ischemic Stroke Patients Undergoing Thrombectomy"
+    },
+    {
+      "pmid": "25382315",
+      "cluster": 9,
+      "confidence": 0.8774,
+      "category": "neurology",
+      "title": "Neural function, injury, and stroke subtype predict treatment gains after stroke"
+    },
+    {
+      "pmid": "29321336",
+      "cluster": 9,
+      "confidence": 0.9509,
+      "category": "neurology",
+      "title": "Neuroimaging Identifies Patients Most Likely to Respond to a Restorative Stroke Therapy"
+    },
+    {
+      "pmid": "31714631",
+      "cluster": 9,
+      "confidence": 1.0,
+      "category": "neurology",
+      "title": "Why Most Acute Stroke Studies Are Positive in Animals but Not in Patients: A Systematic Comparison of Preclinical, Early Phase, and Phase 3 Clinical Trials of Neuroprotective Agents"
+    },
+    {
+      "pmid": "36462099",
+      "cluster": 9,
+      "confidence": 1.0,
+      "category": "neurology",
+      "title": "Stroke and Neurogenesis: Bridging Clinical Observations to New Mechanistic Insights from Animal Models"
+    },
+    {
+      "pmid": "31761058",
+      "cluster": 9,
+      "confidence": 0.8676,
+      "category": "neurology",
+      "title": "Neuroimaging of Acute Stroke"
+    },
+    {
+      "pmid": "23109881",
+      "cluster": 9,
+      "confidence": 0.9612,
+      "category": "neurology",
+      "title": "Neuroprotection for stroke: current status and future perspectives"
+    },
+    {
+      "pmid": "29656097",
+      "cluster": -1,
+      "confidence": 0.0,
+      "category": "neurology",
+      "title": "Treatment of epilepsy in multiple sclerosis"
+    },
+    {
+      "pmid": "40329813",
+      "cluster": -1,
+      "confidence": 0.0,
+      "category": "neurology",
+      "title": "Multiple Sclerosis and Seizures: Clinical, Diagnostic and Therapeutic Correlations"
+    },
+    {
+      "pmid": "38383156",
+      "cluster": -1,
+      "confidence": 0.0,
+      "category": "neurology",
+      "title": "Incidence and determinants of seizures in multiple sclerosis: a meta-analysis of randomised clinical trials"
+    },
+    {
+      "pmid": "33484895",
+      "cluster": 3,
+      "confidence": 0.275,
+      "category": "infectious disease",
+      "title": "Exploring the future of infectious disease treatment in a post-antibiotic era: A comparative review of alternative therapeutics"
+    },
+    {
+      "pmid": "12807291",
+      "cluster": 3,
+      "confidence": 0.2875,
+      "category": "infectious disease",
+      "title": "Non-antibiotic therapies for infectious diseases"
+    },
+    {
+      "pmid": "40745633",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "infectious disease",
+      "title": "Efficacy of tenofovir on clinical outcomes of COVID-19 patients: a systematic review"
+    },
+    {
+      "pmid": "40067859",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "infectious disease",
+      "title": "A Systematic Review and Meta-analysis of the Effectiveness of Remdesivir to Treat SARS-CoV-2 in Hospitalized Patients: Have the Guidelines Evolved With the Evidence?"
+    },
+    {
+      "pmid": "41027009",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "infectious disease",
+      "title": "Retreatment With Nirmatrelvir/Ritonavir Following Return of COVID-19 Symptoms and SARS-CoV-2 Positivity"
+    },
+    {
+      "pmid": "41132135",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "infectious disease",
+      "title": "Effectiveness of Nirmatrelvir/Ritonavir or Molnupiravir Use in Immunocompromised Patients on B-Cell-Depleting Therapy With COVID-19: A Target Trial Emulation Study"
+    },
+    {
+      "pmid": "40281241",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "infectious disease",
+      "title": "Into the Unknown: Practical Remdesivir Restriction in the Era of Widespread SARS-CoV-2 Seropositivity"
+    },
+    {
+      "pmid": "41111097",
+      "cluster": 2,
+      "confidence": 0.948,
+      "category": "infectious disease",
+      "title": "Development and Validation of an Electronic Health Record-Derived Prediction Model for Preventing COVID-19 Hospitalization and Death"
+    },
+    {
+      "pmid": "40329717",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "infectious disease",
+      "title": "Navigating the COVID-19 Treatment Landscape: Efficacy and Side-Effects of Current Therapies against SARS-CoV-2"
+    },
+    {
+      "pmid": "40225829",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "infectious disease",
+      "title": "A Rapid Systematic Review of U.S. Food and Drug Administration-Authorized COVID-19 Treatments"
+    },
+    {
+      "pmid": "24915263",
+      "cluster": 5,
+      "confidence": 1.0,
+      "category": "endocrinology",
+      "title": "Insulin therapy for type 2 diabetes mellitus"
+    },
+    {
+      "pmid": "29508275",
+      "cluster": 5,
+      "confidence": 0.7843,
+      "category": "endocrinology",
+      "title": "EADSG Guidelines: Insulin Therapy in Diabetes"
+    },
+    {
+      "pmid": "24622264",
+      "cluster": 5,
+      "confidence": 0.822,
+      "category": "endocrinology",
+      "title": "Short-term intensive insulin therapy in type 2 diabetes mellitus: a systematic review and meta-analysis"
+    },
+    {
+      "pmid": "37150579",
+      "cluster": 5,
+      "confidence": 1.0,
+      "category": "endocrinology",
+      "title": "American Association of Clinical Endocrinology Consensus Statement: Comprehensive Type 2 Diabetes Management Algorithm - 2023 Update"
+    },
+    {
+      "pmid": "40851876",
+      "cluster": 2,
+      "confidence": 0.5634,
+      "category": "endocrinology",
+      "title": "Personalized Approaches to Hypothyroidism: The Role of Triiodothyronine (T3) in Thyroid Hormone Replacement"
+    },
+    {
+      "pmid": "41482002",
+      "cluster": 2,
+      "confidence": 0.4663,
+      "category": "endocrinology",
+      "title": "Approach to the Patient Considering Thyroid Hormone Deprescribing"
+    },
+    {
+      "pmid": "40531844",
+      "cluster": 2,
+      "confidence": 0.8967,
+      "category": "endocrinology",
+      "title": "Comprehensive framework for thyroid disorder diagnosis: Integrating advanced feature selection, genetic algorithms, and machine learning for enhanced accuracy and other performance matrices"
+    },
+    {
+      "pmid": "21988204",
+      "cluster": 2,
+      "confidence": 0.3616,
+      "category": "endocrinology",
+      "title": "Subclinical Cushing's syndrome: definition and management"
+    },
+    {
+      "pmid": "26045561",
+      "cluster": 2,
+      "confidence": 0.3233,
+      "category": "endocrinology",
+      "title": "Clinicopathological correlates of adrenal Cushing's syndrome"
+    },
+    {
+      "pmid": "26951056",
+      "cluster": 2,
+      "confidence": 0.3238,
+      "category": "endocrinology",
+      "title": "Endocrine dysfunction in hereditary hemochromatosis"
+    },
+    {
+      "pmid": "34988090",
+      "cluster": 3,
+      "confidence": 1.0,
+      "category": "gastroenterology",
+      "title": "Treatment of Inflammatory Bowel Disease: A Comprehensive Review"
+    },
+    {
+      "pmid": "37615291",
+      "cluster": 3,
+      "confidence": 1.0,
+      "category": "gastroenterology",
+      "title": "A Review of Available Medical Therapies to Treat Moderate-to-Severe Inflammatory Bowel Disease"
+    },
+    {
+      "pmid": "18200659",
+      "cluster": 3,
+      "confidence": 0.7934,
+      "category": "gastroenterology",
+      "title": "Treatment of inflammatory bowel disease: a review of medical therapy"
+    },
+    {
+      "pmid": "33940007",
+      "cluster": 3,
+      "confidence": 1.0,
+      "category": "gastroenterology",
+      "title": "Approach to the Management of Recently Diagnosed Inflammatory Bowel Disease Patients: A User's Guide for Adult and Pediatric Gastroenterologists"
+    },
+    {
+      "pmid": "34107967",
+      "cluster": 8,
+      "confidence": 1.0,
+      "category": "gastroenterology",
+      "title": "Does liver cirrhosis affect the surgical outcome of primary colorectal cancer surgery? A meta-analysis"
+    },
+    {
+      "pmid": "32802813",
+      "cluster": 8,
+      "confidence": 1.0,
+      "category": "gastroenterology",
+      "title": "The prognoses and postoperative outcomes of patients with both colorectal cancer and liver cirrhosis based on a nationwide cohort in Korea"
+    },
+    {
+      "pmid": "26776878",
+      "cluster": 8,
+      "confidence": 0.8439,
+      "category": "gastroenterology",
+      "title": "Management of colorectal cancer in patients with cirrhosis: A retrospective, case-matched study of short- and long-term outcomes"
+    },
+    {
+      "pmid": "28586376",
+      "cluster": 8,
+      "confidence": 0.8395,
+      "category": "gastroenterology",
+      "title": "Oncologic and surgical outcomes in colorectal cancer patients with liver cirrhosis: A propensity-matched study"
+    },
+    {
+      "pmid": "40560200",
+      "cluster": 2,
+      "confidence": 0.9951,
+      "category": "gastroenterology",
+      "title": "Hepatocellular Carcinoma Surveillance in Patients With Cirrhosis at US Safety-Net Health Systems"
+    },
+    {
+      "pmid": "24502344",
+      "cluster": 3,
+      "confidence": 1.0,
+      "category": "gastroenterology",
+      "title": "New biologic therapeutics for ulcerative colitis and Crohn's disease"
+    },
+    {
+      "pmid": "40760674",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "pulmonology",
+      "title": "Microbial profiling of community-acquired pneumonia in patients with and without chronic obstructive pulmonary disease: a comprehensive molecular diagnostics study"
+    },
+    {
+      "pmid": "41025342",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "pulmonology",
+      "title": "Pulmonary Fibrosis in Critically Ill Patients With COVID-19: A Multi-Center Retrospective Cohort Study in Korea"
+    },
+    {
+      "pmid": "40604876",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "pulmonology",
+      "title": "Four-year respiratory consequences of COVID-19 related pneumonia: a longitudinal cohort study"
+    },
+    {
+      "pmid": "41275171",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "pulmonology",
+      "title": "Pulmonary lesion volume ratio and laboratory parameters as risk factors for plastic bronchitis in pediatric refractory Mycoplasma pneumoniae pneumonia"
+    },
+    {
+      "pmid": "40679934",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "pulmonology",
+      "title": "Diagnosis and Management of Community-acquired Pneumonia: An Official American Thoracic Society Clinical Practice Guideline"
+    },
+    {
+      "pmid": "40855275",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "pulmonology",
+      "title": "Association between body mass index and the prognosis of community-acquired pneumonia in patients with nontuberculous mycobacterial pulmonary disease: a retrospective cohort study using a nationwide inpatient database"
+    },
+    {
+      "pmid": "41270012",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "pulmonology",
+      "title": "Clinical characteristics and predictive models for hospitalized patients with COVID-19 combined with bacterial pneumonia"
+    },
+    {
+      "pmid": "40352021",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "pulmonology",
+      "title": "Three in One: A Case Report of Pulmonary Co-infection With a Virus, a Bacterium, and a Fungus in an Immunocompetent Adult"
+    },
+    {
+      "pmid": "41442001",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "pulmonology",
+      "title": "Integrated assessment of total airway count and pneumonia volume on chest computed tomography as a prognostic biomarker for coronavirus disease"
+    },
+    {
+      "pmid": "37751461",
+      "cluster": 2,
+      "confidence": 1.0,
+      "category": "pulmonology",
+      "title": "Prevalence and clinical impacts of obstructive sleep apnea in patients with idiopathic pulmonary fibrosis: A single-center, retrospective study"
+    },
+    {
+      "pmid": "30285183",
+      "cluster": 6,
+      "confidence": 1.0,
+      "category": "rheumatology",
+      "title": "Diagnosis and Management of Rheumatoid Arthritis: A Review"
+    },
+    {
+      "pmid": "38561181",
+      "cluster": 6,
+      "confidence": 0.768,
+      "category": "rheumatology",
+      "title": "Long-term clinical outcomes in early rheumatoid arthritis that was treated-to-target in the BeSt and IMPROVED studies"
+    },
+    {
+      "pmid": "37573754",
+      "cluster": 6,
+      "confidence": 1.0,
+      "category": "rheumatology",
+      "title": "Comparative effectiveness of treatments for rheumatoid arthritis in clinical practice: A systematic review"
+    },
+    {
+      "pmid": "35953230",
+      "cluster": 6,
+      "confidence": 0.7916,
+      "category": "rheumatology",
+      "title": "Treatment Guidelines in Rheumatoid Arthritis"
+    },
+    {
+      "pmid": "20036942",
+      "cluster": 4,
+      "confidence": 1.0,
+      "category": "rheumatology",
+      "title": "Novel therapeutic approaches in systemic lupus erythematosus"
+    },
+    {
+      "pmid": "19318389",
+      "cluster": 4,
+      "confidence": 1.0,
+      "category": "rheumatology",
+      "title": "Cellular therapy of systemic lupus erythematosus"
+    },
+    {
+      "pmid": "21503694",
+      "cluster": 4,
+      "confidence": 1.0,
+      "category": "rheumatology",
+      "title": "Treatment of cutaneous lupus"
+    },
+    {
+      "pmid": "36868923",
+      "cluster": 4,
+      "confidence": 1.0,
+      "category": "rheumatology",
+      "title": "Cutaneous lupus erythematosus: a review of etiopathogenic, clinical, diagnostic and therapeutic aspects"
+    },
+    {
+      "pmid": "23253235",
+      "cluster": 6,
+      "confidence": 1.0,
+      "category": "rheumatology",
+      "title": "Conventional DMARD therapy (methotrexate-sulphasalazine) may decrease the requirement of biologics in routine practice of ankylosing spondylitis patients: a real-life experience"
+    },
+    {
+      "pmid": "31171312",
+      "cluster": 6,
+      "confidence": 0.5985,
+      "category": "rheumatology",
+      "title": "Oral treatment options for AS and PsA: DMARDs and small-molecule inhibitors"
+    },
+    {
+      "pmid": "39356511",
+      "cluster": 0,
+      "confidence": 1.0,
+      "category": "nephrology",
+      "title": "Dialysis for Chronic Kidney Failure: A Review"
+    },
+    {
+      "pmid": "30208820",
+      "cluster": 0,
+      "confidence": 1.0,
+      "category": "nephrology",
+      "title": "When to initiate dialysis for end-stage kidney disease: evidence and challenges"
+    },
+    {
+      "pmid": "12923722",
+      "cluster": 0,
+      "confidence": 1.0,
+      "category": "nephrology",
+      "title": "Outcomes research in glomerulonephritis"
+    },
+    {
+      "pmid": "38500101",
+      "cluster": 0,
+      "confidence": 1.0,
+      "category": "nephrology",
+      "title": "Clinicopathological characteristics and predictors of outcome of rapidly progressive glomerulonephritis: a retrospective study"
+    },
+    {
+      "pmid": "18245806",
+      "cluster": 0,
+      "confidence": 1.0,
+      "category": "nephrology",
+      "title": "Primary glomerulonephritis: an update on renal survival and determinants of progression"
+    },
+    {
+      "pmid": "2063844",
+      "cluster": 0,
+      "confidence": 1.0,
+      "category": "nephrology",
+      "title": "Prognostic factors in mesangial IgA glomerulonephritis: an extensive study with univariate and multivariate analyses"
+    },
+    {
+      "pmid": "32129212",
+      "cluster": 0,
+      "confidence": 0.8474,
+      "category": "nephrology",
+      "title": "Predictors of renal outcomes in anti-neutrophil cytoplasmic antibody glomerulonephritis"
+    },
+    {
+      "pmid": "1938221",
+      "cluster": 0,
+      "confidence": 1.0,
+      "category": "nephrology",
+      "title": "Long-term prognosis of chronic glomerulonephritis"
+    },
+    {
+      "pmid": "12105242",
+      "cluster": 0,
+      "confidence": 1.0,
+      "category": "nephrology",
+      "title": "Long-term prognosis of diffuse proliferative glomerulonephritis associated with infection in adults"
+    },
+    {
+      "pmid": "23002699",
+      "cluster": 0,
+      "confidence": 0.9888,
+      "category": "nephrology",
+      "title": "Acute tubular necrosis and renal failure in patients with glomerular disease"
+    },
+    {
+      "pmid": "41123905",
+      "cluster": 10,
+      "confidence": 1.0,
+      "category": "psychiatry",
+      "title": "Serial Ketamine Infusions as Adjunctive Therapy to Inpatient Care for Depression: The KARMA-Dep 2 Randomized Clinical Trial"
+    },
+    {
+      "pmid": "41637092",
+      "cluster": 10,
+      "confidence": 0.8118,
+      "category": "psychiatry",
+      "title": "A Ketogenic Diet for Treatment-Resistant Depression: A Randomized Clinical Trial"
+    },
+    {
+      "pmid": "40846158",
+      "cluster": 10,
+      "confidence": 0.9306,
+      "category": "psychiatry",
+      "title": "Efficacy and tolerability of pramipexole versus antidepressants for Parkinson's disease with depression: a meta-analysis of randomized controlled trials"
+    },
+    {
+      "pmid": "40915504",
+      "cluster": 10,
+      "confidence": 0.71,
+      "category": "psychiatry",
+      "title": "Evaluating the efficacy of psychotherapeutic and pharmacological treatments for depression on anhedonia: A systematic review and meta-analysis"
+    },
+    {
+      "pmid": "40641116",
+      "cluster": 10,
+      "confidence": 1.0,
+      "category": "psychiatry",
+      "title": "MDMA-assisted therapy as a treatment for major depressive disorder: proof of principle study"
+    },
+    {
+      "pmid": "40047545",
+      "cluster": 10,
+      "confidence": 0.9735,
+      "category": "psychiatry",
+      "title": "Results From a Long-Term Observational Follow-Up Study of a Single Dose of Psilocybin for a Treatment-Resistant Episode of Major Depressive Disorder"
+    },
+    {
+      "pmid": "41050149",
+      "cluster": 10,
+      "confidence": 0.9306,
+      "category": "psychiatry",
+      "title": "Psilocybin with psychotherapeutic support for treatment-resistant depression: a pilot clinical trial"
+    },
+    {
+      "pmid": "36265270",
+      "cluster": 9,
+      "confidence": 0.61,
+      "category": "psychiatry",
+      "title": "Long-term outcomes of cognitive behavioural therapy for social anxiety disorder: A meta-analysis of randomised controlled trials"
+    },
+    {
+      "pmid": "29451967",
+      "cluster": 9,
+      "confidence": 0.6424,
+      "category": "psychiatry",
+      "title": "Cognitive behavioral therapy for anxiety and related disorders: A meta-analysis of randomized placebo-controlled trials"
+    },
+    {
+      "pmid": "31758858",
+      "cluster": -1,
+      "confidence": 0.0,
+      "category": "psychiatry",
+      "title": "Long-term Outcomes of Cognitive Behavioral Therapy for Anxiety-Related Disorders: A Systematic Review and Meta-analysis"
+    }
+  ]
+}

@@ -42,6 +42,7 @@ Output:
 ## Tuning
 
 Open `hdbscan_cluster.py` and edit the parameter blocks at the top.
+The sae is done with sparse vectors in `cluster_sparse.py` although some preprocessing is done to work efficiently with sparse vectors given they are returned in a very unique data structure.
 
 **UMAP**
 

@@ -3,7 +3,7 @@
 ## Project State
 
 Phase 1 complete — 100 PubMed abstracts fetched, embedded, and stored in Pinecone.
-Phase 2 in progress — HDBSCAN + UMAP clustering is the chosen approach. Sparse clustering and hybrid PMID lookup are next.
+Phase 2 in progress — Step 9 (sparse clustering) done. Steps 10-12 (related work lookup, hybrid index) are next.
 
 ---
 
@@ -28,6 +28,23 @@ OPTICS excluded — viable but HDBSCAN dominates on ARI and noise%.
 
 **Active tuning script:** `hdbscan_cluster.py`
 Current params: `n_components=40`, `n_neighbors=5`, `min_cluster_size=3`, `method=eom`
+
+**Step 9 result — Dense vs Sparse (pinecone-sparse-english-v0 + UMAP + HDBSCAN):**
+
+| Metric | Dense | Sparse |
+|---|---|---|
+| Clusters | 13 | 11 |
+| Noise % | 1.0% | 4.0% |
+| Silhouette | 0.8276 | 0.7475 |
+| Davies-Bouldin | 0.2331 | 0.2953 |
+| ARI | 0.6287 | 0.4583 |
+| Avg confidence | 0.8655 | 0.8884 |
+
+Dense wins on all quality metrics. Sparse ARI is 0.46 vs 0.63 — confirms semantic embeddings capture category structure better than lexical/SPLADE weights. Sparse merges semantically related categories (e.g. pulmonology + infectious disease) because surface vocabulary overlaps. Dense keeps them separate via learned semantics.
+
+Pinecone sparse embedding API note: `emb.sparse_indices` (list of large int hash IDs) and `emb.sparse_values` (list of floats). Hashes are NOT bounded vocabulary indices — must remap to compact indices before building `scipy.sparse.csr_matrix`. 4057 unique tokens across 100 docs, avg 150.7 non-zero per abstract. UMAP accepts sparse matrices natively with `metric="cosine"`.
+
+Visualization: `visualize_clusters.py` generates `data/cluster_comparison.png` — 2x2 grid (dense/sparse x clusters/categories), 2D UMAP with `min_dist=0.1`.
 
 ---
 
@@ -95,7 +112,7 @@ VALYU_API_KEY=...
 |---|---|---|
 | `pinecone` | 8.1.0 | Vector DB + inference API |
 | `valyu` | 2.6.0 | PubMed search API |
-| `scikit-learn` | 1.8.0 | Metrics (silhouette, ARI, Davies-Bouldin), TF-IDF |
+| `scikit-learn` | 1.8.0 | Metrics (silhouette, ARI, Davies-Bouldin) |
 | `numpy` | 2.4.2 | Array ops |
 | `scipy` | 1.17.1 | Sparse matrices |
 | `hdbscan` | 0.8.41 | HDBSCAN clustering |
@@ -107,15 +124,16 @@ VALYU_API_KEY=...
 | `torch` | 2.10.0 | Deep learning backend (transitive) |
 | `transformers` | 5.2.0 | HuggingFace models (transitive) |
 | `sentence-transformers` | 5.2.3 | Sentence embeddings (transitive) |
+| `matplotlib` | 3.10.8 | Cluster comparison visualization |
 
 ---
 
 ## Phase 2 — Remaining Steps
 
-### STEP 9 — Sparse Clustering (`cluster_sparse.py`)
-- TF-IDF on abstracts (sklearn), same HDBSCAN+UMAP pipeline
-- Compare metrics against dense results
-- Expected: lower ARI (TF-IDF misses semantic overlap), useful to confirm dense embeddings are the right choice
+### STEP 9 — Sparse Clustering (`cluster_sparse.py`) — DONE
+- Used pinecone-sparse-english-v0 (SPLADE) instead of TF-IDF — same HDBSCAN+UMAP pipeline
+- Dense wins: ARI 0.63 vs 0.46, Silhouette 0.83 vs 0.75
+- Visualization: `visualize_clusters.py` -> `data/cluster_comparison.png`
 
 ### STEP 10 — Find Related Work: Dense (`find_related.py`)
 - Input: PMID
@@ -145,4 +163,9 @@ VALYU_API_KEY=...
 | `data/embeddings.json` | 100 dense vectors + metadata |
 | `data/hdbscan_results.json` | Latest cluster assignments and metrics |
 | `data/clusters_dense.json` | DBSCAN/HDBSCAN/OPTICS comparison run (archived) |
+| `data/sparse_embeddings.json` | 100 sparse vectors (pinecone-sparse-english-v0), cached |
+| `data/hdbscan_sparse_results.json` | Sparse cluster assignments and metrics |
+| `data/cluster_comparison.png` | 2x2 dense vs sparse visualization |
+| `cluster_sparse.py` | Sparse clustering script (mirrors hdbscan_cluster.py) |
+| `visualize_clusters.py` | 2x2 UMAP plot — dense vs sparse, clusters vs categories |
 | `prev_steps/` | Phase 1 scripts: fetch, embed, index setup, upsert, query |
