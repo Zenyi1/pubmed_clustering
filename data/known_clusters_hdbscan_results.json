@@ -1,0 +1,826 @@
+{
+  "umap_params": {
+    "n_components": 40,
+    "n_neighbors": 5,
+    "min_dist": 0.0,
+    "metric": "cosine",
+    "random_state": 42
+  },
+  "hdbscan_params": {
+    "min_cluster_size": 3,
+    "min_samples": null,
+    "cluster_selection_epsilon": 0.0,
+    "cluster_selection_method": "eom",
+    "metric": "euclidean"
+  },
+  "metrics": {
+    "n_clusters": 4,
+    "noise_pct": 0.0,
+    "silhouette": 0.9423,
+    "davies_bouldin": 0.0875,
+    "ari_vs_ground_truth": 1.0,
+    "avg_membership_confidence": 0.9358
+  },
+  "assignments": [
+    {
+      "pmid": "40275414",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Association of CAR-T approval on outcomes in patients with diffuse large B-cell lymphoma at the population level in the United States"
+    },
+    {
+      "pmid": "28803861",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Long-Duration Complete Remissions of Diffuse Large B Cell Lymphoma after Anti-CD19 Chimeric Antigen Receptor T Cell Therapy"
+    },
+    {
+      "pmid": "36735393",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "A validated composite comorbidity index predicts outcomes of CAR T-cell therapy in patients with diffuse large B-cell lymphoma"
+    },
+    {
+      "pmid": "32789017",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Efficacy and safety of second-generation CAR T-cell therapy in diffuse large B-cell lymphoma: A meta-analysis"
+    },
+    {
+      "pmid": "33781518",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "The International Prognostic Index Is Associated with Outcomes in Diffuse Large B Cell Lymphoma after Chimeric Antigen Receptor T Cell Therapy"
+    },
+    {
+      "pmid": "38194367",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Baseline Serum Inflammatory Proteins Predict Poor CAR T Outcomes in Diffuse Large B-cell Lymphoma"
+    },
+    {
+      "pmid": "37294963",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "CAR T-cell therapy in large B cell lymphoma"
+    },
+    {
+      "pmid": "40229268",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "CAR T-cell therapy response varies by extranodal disease site in large B-cell lymphoma"
+    },
+    {
+      "pmid": "38916811",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Medicare Utilization and Cost Trends for CAR T Cell Therapies Across Settings of Care in the Treatment of Diffuse Large B-Cell Lymphoma"
+    },
+    {
+      "pmid": "35720352",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Novel Immune-Based treatments for Diffuse Large B-Cell Lymphoma: The Post-CAR T Cell Era"
+    },
+    {
+      "pmid": "35768052",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Role of CD19 Chimeric Antigen Receptor T Cells in Second-Line Large B Cell Lymphoma: Lessons from Phase 3 Trials. An Expert Panel Opinion from the American Society for Transplantation and Cellular Therapy"
+    },
+    {
+      "pmid": "25319501",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "T cells expressing CD19 chimeric antigen receptors for acute lymphoblastic leukaemia in children and young adults: a phase 1 dose-escalation trial"
+    },
+    {
+      "pmid": "26352815",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Chimeric Antigen Receptor T Cells against CD19 for Multiple Myeloma"
+    },
+    {
+      "pmid": "32580597",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "A Phase I clinical trial of chimeric antigen receptor-modified T cells in patients with relapsed and refractory lymphoma"
+    },
+    {
+      "pmid": "30557517",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "CD19 Chimeric Antigen Receptor Therapy for Refractory Aggressive B-Cell Lymphoma"
+    },
+    {
+      "pmid": "28857075",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Chimeric antigen receptor T-cell therapies for lymphoma"
+    },
+    {
+      "pmid": "36916189",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "How I treat refractory/relapsed diffuse large B-cell lymphomas with CD19-directed chimeric antigen receptor T cells"
+    },
+    {
+      "pmid": "26562471",
+      "cluster": 1,
+      "confidence": 0.5725,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "CD19 chimeric antigen receptor T cell therapy for the treatment of B cell lineage acute lymphoblastic leukemia"
+    },
+    {
+      "pmid": "41530773",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Patterns, risk factors and management of CD19-directed chimeric antigen receptor T-cell therapy failure in CNS lymphoma"
+    },
+    {
+      "pmid": "31723815",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Chimeric Antigen Receptor T Cells Targeting CD19 and Ibrutinib for Chronic Lymphocytic Leukemia"
+    },
+    {
+      "pmid": "29038338",
+      "cluster": 1,
+      "confidence": 0.6686,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Infectious complications of CD19-targeted chimeric antigen receptor-modified T-cell immunotherapy"
+    },
+    {
+      "pmid": "38554710",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "CD19-targeted chimeric antigen receptor T cell therapy in two patients with multiple sclerosis"
+    },
+    {
+      "pmid": "34508031",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Role of chimeric antigen receptor T-cell therapy: bridge to transplantation or stand-alone therapy in pediatric acute lymphoblastic leukemia"
+    },
+    {
+      "pmid": "32305998",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "CAR T-cell therapy for the management of refractory/relapsed high-grade B-cell lymphoma: a practical overview"
+    },
+    {
+      "pmid": "38283399",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Treatment strategies for relapse after CAR T-cell therapy in B cell lymphoma"
+    },
+    {
+      "pmid": "41691094",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Disease status at CAR T-cell infusion in relapsed or refractory large B-cell lymphoma: prognostic significance for real-world outcomes, irrespective of bridging therapy"
+    },
+    {
+      "pmid": "37076102",
+      "cluster": 1,
+      "confidence": 0.4995,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Mechanisms of Resistance and Treatment of Relapse after CAR T-cell Therapy for Large B-cell Lymphoma and Multiple Myeloma"
+    },
+    {
+      "pmid": "39898872",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "CAR-T cell therapy in the treatment of relapsed or refractory primary central nervous system lymphoma: recent advances and challenges"
+    },
+    {
+      "pmid": "31648294",
+      "cluster": 1,
+      "confidence": 0.9026,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "High rate of durable complete remission in follicular lymphoma after CD19 CAR-T cell immunotherapy"
+    },
+    {
+      "pmid": "29385376",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Long-Term Follow-up of CD19 CAR Therapy in Acute Lymphoblastic Leukemia"
+    },
+    {
+      "pmid": "40334157",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Enhanced CAR T-Cell Therapy for Lymphoma after Previous Failure"
+    },
+    {
+      "pmid": "40320041",
+      "cluster": 1,
+      "confidence": 0.5704,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "The mechanisms and countermeasures for CAR-T cell expansion and persistence deficiency"
+    },
+    {
+      "pmid": "36982764",
+      "cluster": 1,
+      "confidence": 1.0,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "CAR T-Cell Persistence Correlates with Improved Outcome in Patients with B-Cell Lymphoma"
+    },
+    {
+      "pmid": "31477906",
+      "cluster": 1,
+      "confidence": 0.483,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Enhanced CAR T cell expansion and prolonged persistence in pediatric patients with ALL treated with a low-affinity CD19 CAR"
+    },
+    {
+      "pmid": "39639359",
+      "cluster": 1,
+      "confidence": 0.5233,
+      "true_cluster": 0,
+      "cluster_name": "CAR-T cell therapy for B-cell lymphoma",
+      "title": "Advances in CAR-T cell therapy for hematologic and solid malignancies: latest updates from 2024 ESMO Congress"
+    },
+    {
+      "pmid": "35914933",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "The role of GLP-1 receptor agonists in managing type 2 diabetes"
+    },
+    {
+      "pmid": "33068776",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "GLP-1 receptor agonists in the treatment of type 2 diabetes - state-of-the-art"
+    },
+    {
+      "pmid": "28848315",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Glucagon-Like Peptide 1 Receptor Agonists for Type 2 Diabetes"
+    },
+    {
+      "pmid": "38286487",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Comparative effectiveness of GLP-1 receptor agonists on glycaemic control, body weight, and lipid profile for type 2 diabetes: systematic review and network meta-analysis"
+    },
+    {
+      "pmid": "32815454",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "GLP-1 receptor agonists in the treatment of type 2 diabetes: role and clinical experience to date"
+    },
+    {
+      "pmid": "36050763",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Tirzepatide, a dual GIP/GLP-1 receptor co-agonist for the treatment of type 2 diabetes with unmatched effectiveness regrading glycaemic control and body weight reduction"
+    },
+    {
+      "pmid": "32910490",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "A review of GLP-1 receptor agonists in type 2 diabetes: A focus on the mechanism of action of once-weekly agents"
+    },
+    {
+      "pmid": "26371721",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "User's guide to mechanism of action and clinical use of GLP-1 receptor agonists"
+    },
+    {
+      "pmid": "39072740",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "GLP-1 receptor agonists and their role in managing type 2 diabetes"
+    },
+    {
+      "pmid": "36508493",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "GLP-1 Receptor Agonists for the Reduction of Atherosclerotic Cardiovascular Risk in Patients With Type 2 Diabetes"
+    },
+    {
+      "pmid": "41082229",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Liraglutide vs Semaglutide vs Dulaglutide in Veterans With Type 2 Diabetes"
+    },
+    {
+      "pmid": "40444045",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Comparative effectiveness of semaglutide versus liraglutide, dulaglutide or tirzepatide: a systematic review and meta-analysis"
+    },
+    {
+      "pmid": "41093600",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Long-term comparative effectiveness of once-weekly semaglutide versus alternative treatments in a real-world US adult population with type 2 diabetes: a randomized pragmatic clinical trial"
+    },
+    {
+      "pmid": "40279144",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "High-Dose Semaglutide (Up to 16 mg) in People With Type 2 Diabetes and Overweight or Obesity: A Randomized, Placebo-Controlled, Phase 2 Trial"
+    },
+    {
+      "pmid": "40156843",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Oral Semaglutide and Cardiovascular Outcomes in People With Type 2 Diabetes, According to SGLT2i Use: Prespecified Analyses of the SOUL Randomized Trial"
+    },
+    {
+      "pmid": "40162642",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Oral Semaglutide and Cardiovascular Outcomes in High-Risk Type 2 Diabetes"
+    },
+    {
+      "pmid": "41513169",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Proteomic effects of short-term liraglutide vs. placebo in a blinded crossover RCT: Implications for efficacy, safety, and comparison with semaglutide"
+    },
+    {
+      "pmid": "40544432",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Cagrilintide-Semaglutide in Adults with Overweight or Obesity and Type 2 Diabetes"
+    },
+    {
+      "pmid": "41188987",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Semaglutide reduces cardiovascular events in type 2 diabetes: a systematic review and meta-analysis highlighting enhanced benefits in chronic kidney disease"
+    },
+    {
+      "pmid": "41627802",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Oral Semaglutide and Heart Failure Outcomes in Persons With Type 2 Diabetes: A Secondary Analysis of the SOUL Randomized Clinical Trial"
+    },
+    {
+      "pmid": "41283266",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Semaglutide from Bench to Bedside: The Experimental Journey Towards a Transformative Therapy for Diabetes, Obesity and Metabolic Liver Disorders"
+    },
+    {
+      "pmid": "36629298",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Incretin-based therapy of metabolic disease"
+    },
+    {
+      "pmid": "18491986",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Incretin mimetics and dipeptidyl peptidase 4 inhibitors in clinical trials for the treatment of type 2 diabetes"
+    },
+    {
+      "pmid": "26525806",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Role of incretin-based therapies and sodium-glucose co-transporter-2 inhibitors as adjuncts to insulin therapy in Type 2 diabetes, with special reference to IDegLira"
+    },
+    {
+      "pmid": "29074120",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Incretin-based therapy in type 2 diabetes: An evidence based systematic review and meta-analysis"
+    },
+    {
+      "pmid": "37430117",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Incretin hormones and type 2 diabetes"
+    },
+    {
+      "pmid": "21525466",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Therapy in the early stage: incretins"
+    },
+    {
+      "pmid": "25456646",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Incretin-based therapies"
+    },
+    {
+      "pmid": "26137918",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "Investigating incretin-based therapies as a novel treatment for depression in type 2 diabetes: Findings from the South London Diabetes (SOUL-D) Study"
+    },
+    {
+      "pmid": "18227398",
+      "cluster": 3,
+      "confidence": 1.0,
+      "true_cluster": 1,
+      "cluster_name": "GLP-1 receptor agonists for type 2 diabetes",
+      "title": "New drugs for the treatment of diabetes: part II: Incretin-based therapy and beyond"
+    },
+    {
+      "pmid": "30660117",
+      "cluster": 2,
+      "confidence": 0.8262,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Long-term outcomes following deep brain stimulation for Parkinson's disease"
+    },
+    {
+      "pmid": "35560443",
+      "cluster": 2,
+      "confidence": 0.9794,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "How Does Deep Brain Stimulation Change the Course of Parkinson's Disease?"
+    },
+    {
+      "pmid": "30778210",
+      "cluster": 2,
+      "confidence": 0.9709,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Long-term outcomes of deep brain stimulation in Parkinson disease"
+    },
+    {
+      "pmid": "29353236",
+      "cluster": 2,
+      "confidence": 1.0,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Deep brain stimulation for Parkinson's disease: defining the optimal location within the subthalamic nucleus"
+    },
+    {
+      "pmid": "16280671",
+      "cluster": 2,
+      "confidence": 1.0,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Deep-brain stimulation in Parkinson's disease: long-term efficacy and safety - What happened this year?"
+    },
+    {
+      "pmid": "27711133",
+      "cluster": 2,
+      "confidence": 1.0,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Developing a Deep Brain Stimulation Neuromodulation Network for Parkinson Disease, Essential Tremor, and Dystonia: Report of a Quality Improvement Project"
+    },
+    {
+      "pmid": "35798568",
+      "cluster": 2,
+      "confidence": 0.9905,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Deep brain stimulation for Parkinson's disease"
+    },
+    {
+      "pmid": "28391276",
+      "cluster": 2,
+      "confidence": 0.9834,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "How Efficient Is Subthalamic Deep Brain Stimulation in Reducing Dyskinesia in Parkinson's Disease?"
+    },
+    {
+      "pmid": "28331322",
+      "cluster": 2,
+      "confidence": 0.9863,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "The role of deep brain stimulation in Parkinson's disease: an overview and update on new developments"
+    },
+    {
+      "pmid": "35318587",
+      "cluster": 2,
+      "confidence": 0.6933,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Deep Brain Stimulation in Parkinson Disease: A Meta-analysis of the Long-term Neuropsychological Outcomes"
+    },
+    {
+      "pmid": "40501019",
+      "cluster": 2,
+      "confidence": 1.0,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Low/High Multi-Frequency Stimulation of the Subthalamic Nucleus Improves Verbal Fluency Maintaining Motor Control in Parkinson's Disease"
+    },
+    {
+      "pmid": "40952750",
+      "cluster": 2,
+      "confidence": 1.0,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Five-Year Outcomes from Deep Brain Stimulation of the Subthalamic Nucleus for Parkinson Disease"
+    },
+    {
+      "pmid": "40488687",
+      "cluster": 2,
+      "confidence": 1.0,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Adaptive vs Conventional Deep Brain Stimulation of the Subthalamic Nucleus for Treatment of Parkinson's Disease: A Multicenter Retrospective Study"
+    },
+    {
+      "pmid": "38766007",
+      "cluster": 2,
+      "confidence": 1.0,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Preoperative network activity predicts the response to subthalamic DBS for Parkinson's disease"
+    },
+    {
+      "pmid": "39225548",
+      "cluster": 2,
+      "confidence": 0.8325,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Quality of Life after Deep Brain Stimulation in Parkinson's Disease: Does the Target Matter?"
+    },
+    {
+      "pmid": "30010975",
+      "cluster": 2,
+      "confidence": 1.0,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Quality of Life Improvement Following Deep Brain Stimulation for Parkinson Disease: Development of a Prognostic Model"
+    },
+    {
+      "pmid": "16107348",
+      "cluster": 2,
+      "confidence": 0.6249,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "The effect of deep brain stimulation on quality of life in movement disorders"
+    },
+    {
+      "pmid": "25217059",
+      "cluster": 2,
+      "confidence": 1.0,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Effects of deep brain stimulation on pain and other nonmotor symptoms in Parkinson disease"
+    },
+    {
+      "pmid": "21180627",
+      "cluster": 2,
+      "confidence": 0.9905,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Deep brain stimulation in Parkinson's disease"
+    },
+    {
+      "pmid": "39160351",
+      "cluster": 2,
+      "confidence": 0.681,
+      "true_cluster": 2,
+      "cluster_name": "Deep brain stimulation for Parkinson's disease",
+      "title": "Chronic adaptive deep brain stimulation versus conventional stimulation in Parkinson's disease: a blinded randomized feasibility trial"
+    },
+    {
+      "pmid": "35984491",
+      "cluster": 0,
+      "confidence": 1.0,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "PD-1/PD-L1 inhibitors in treatment-naïve, advanced non-small cell lung cancer patients with < 1% PD-L1 expression: a meta-analysis of randomized controlled trials"
+    },
+    {
+      "pmid": "39916949",
+      "cluster": 0,
+      "confidence": 1.0,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "Comparative efficacy and safety of first‑line PD‑1/PD‑L1 inhibitors in immunotherapy for non‑small cell lung cancer: A network meta‑analysis"
+    },
+    {
+      "pmid": "39981238",
+      "cluster": 0,
+      "confidence": 0.8584,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "Efficacy and safety of first-line PD-1/PD-L1 inhibitor in combination with CTLA-4 inhibitor in the treatment of patients with advanced non-small cell lung cancer: a systemic review and meta-analysis"
+    },
+    {
+      "pmid": "30819829",
+      "cluster": 0,
+      "confidence": 0.7103,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "PD-1/PD-L1 Blockade Therapy in Advanced Non-Small-Cell Lung Cancer: Current Status and Future Directions"
+    },
+    {
+      "pmid": "40759442",
+      "cluster": 0,
+      "confidence": 0.7388,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "Neoadjuvant anti-programmed death-1 immunotherapy by pembrolizumab in resectable non-small cell lung cancer: results of the NEOMUN trial"
+    },
+    {
+      "pmid": "40225955",
+      "cluster": 0,
+      "confidence": 0.8641,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "Phase 2 Trial of Combination Radiotherapy and Pembrolizumab Plus Chemotherapy in Patients With Previously Untreated Metastatic NSCLC: NJLCG 1902"
+    },
+    {
+      "pmid": "40893177",
+      "cluster": 0,
+      "confidence": 0.9061,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "Brief Report: Prospective Trial of Pembrolizumab Monotherapy in Metastatic NSCLC Evaluating Circulating Tumor DNA as a Surrogate Biomarker of Response"
+    },
+    {
+      "pmid": "36715018",
+      "cluster": 0,
+      "confidence": 1.0,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "Immune checkpoint inhibitors as first-line therapy for non-small cell lung cancer: A systematic evaluation and meta-analysis"
+    },
+    {
+      "pmid": "31319971",
+      "cluster": 0,
+      "confidence": 1.0,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "Immune checkpoint inhibitors, alone or in combination with chemotherapy, as first-line treatment for advanced non-small cell lung cancer. A systematic review and network meta-analysis"
+    },
+    {
+      "pmid": "27267211",
+      "cluster": 0,
+      "confidence": 1.0,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "Immune checkpoint inhibitors as first-line and salvage therapy for advanced non-small-cell lung cancer"
+    },
+    {
+      "pmid": "30577837",
+      "cluster": 0,
+      "confidence": 0.9242,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "Immune-checkpoint inhibitor plus chemotherapy versus conventional chemotherapy for first-line treatment in advanced non-small cell lung carcinoma: a systematic review and meta-analysis"
+    },
+    {
+      "pmid": "34035415",
+      "cluster": 0,
+      "confidence": 0.6772,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "Systemic inflammation and pro-inflammatory cytokine profile predict response to checkpoint inhibitor treatment in NSCLC: a prospective study"
+    },
+    {
+      "pmid": "40935646",
+      "cluster": 0,
+      "confidence": 0.7036,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "[Histological Transformation from Non-small Cell Lung Cancer to Small Cell Lung Cancer Induced by Immune Checkpoint Inhibitor Therapy: A Case Report and Literature Review]"
+    },
+    {
+      "pmid": "38641539",
+      "cluster": 0,
+      "confidence": 0.7415,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "Efficacy of immune checkpoint inhibitors for NSCLC in patients with different age: A systematic review and meta-analysis"
+    },
+    {
+      "pmid": "39500124",
+      "cluster": 0,
+      "confidence": 0.6787,
+      "true_cluster": 3,
+      "cluster_name": "Immune checkpoint inhibitors (PD-1/PD-L1) for NSCLC",
+      "title": "Real-world comparison of the efficacy and safety of atezolizumab versus durvalumab in extensive-stage small cell lung cancer"
+    }
+  ]
+}

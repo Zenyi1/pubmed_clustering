@@ -72,9 +72,7 @@ ABSTRACT_METADATA_LIMIT = 500
 
 PMID_URL_RE = re.compile(r"pubmed\.ncbi\.nlm\.nih\.gov/(\d+)/?")
 
-# ---------------------------------------------------------------------------
-# Helpers (reused from prev_steps/fetch_articles.py)
-# ---------------------------------------------------------------------------
+
 
 
 def extract_abstract(content, description):
@@ -144,11 +142,6 @@ def fetch_cluster(client, cluster_id, config, global_seen):
     return list(collected.values())
 
 
-# ---------------------------------------------------------------------------
-# Embedding (reused from prev_steps/embed_abstracts.py)
-# ---------------------------------------------------------------------------
-
-
 def embed_articles(pc, articles):
     """Embed all articles using Pinecone inference API."""
     embeddings = []
@@ -184,19 +177,12 @@ def embed_articles(pc, articles):
     return embeddings
 
 
-# ---------------------------------------------------------------------------
-# Main
-# ---------------------------------------------------------------------------
-
-
 def main():
     client = Valyu(api_key=os.getenv("VALYU_API_KEY"))
     pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 
     all_articles = []
     global_seen = set()
-
-    print("=== Fetching articles ===\n")
 
     for cluster_id, config in CLUSTERS.items():
         name = config["name"]
@@ -208,12 +194,8 @@ def main():
         for a in articles:
             global_seen.add(a["pmid"])
 
-        count = len(articles)
-        status = "OK" if count >= target else f"SHORT by {target - count}"
-        print(f"  -> {count}/{target} [{status}]\n")
 
         all_articles.extend(articles)
-        time.sleep(1)
 
     # Save articles
     os.makedirs("data", exist_ok=True)
@@ -221,8 +203,6 @@ def main():
         json.dump(all_articles, f, indent=2, ensure_ascii=False)
     print(f"Saved {len(all_articles)} articles to data/known_clusters.json")
 
-    # Embed
-    print("\n=== Embedding articles ===\n")
     embeddings = embed_articles(pc, all_articles)
 
     with open("data/known_clusters_embeddings.json", "w", encoding="utf-8") as f:
